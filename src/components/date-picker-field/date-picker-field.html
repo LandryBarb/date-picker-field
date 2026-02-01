@@ -1,0 +1,102 @@
+<!--
+  Date Picker Field
+  Scaffold only. No ARIA attributes. No keyboard logic beyond TODO placeholders.
+
+  TODO references use Interaction Model sections:
+  §1 Entry, §2 Activation, §3 Navigation, §4 Selection/Submission, §5 Dismissal, §6 Focus return, §7 Tab order.
+-->
+
+<div class="dp-field" data-component="DatePickerField" data-state="default">
+  <!-- Field group -->
+  <div class="dp-field__group">
+    <!-- Label -->
+    <div class="dp-field__label">
+      <label for="dp-date" class="dp-field__labelText">
+        Visit date
+        <!-- TODO (Content rules): required indicator strategy is consumer owned -->
+      </label>
+    </div>
+
+    <!-- Control row -->
+    <div class="dp-field__controlRow">
+      <!-- Primary control: a single interactive stop when inactive -->
+      <button
+        id="dp-date"
+        name="visitDate"
+        type="button"
+        class="dp-field__control"
+        data-el="control"
+      >
+        <span class="dp-field__valueText" data-el="valueText"></span>
+        <span class="dp-field__icon" aria-hidden="true"></span>
+      </button>
+
+      <!-- Optional clear control -->
+      <button
+        type="button"
+        class="dp-field__clear"
+        data-el="clear"
+        hidden
+      >
+        Clear
+      </button>
+    </div>
+
+    <!-- Supporting content -->
+    <div class="dp-field__support">
+      <div class="dp-field__help" data-el="help" hidden></div>
+      <div class="dp-field__status" data-el="status" hidden></div>
+      <div class="dp-field__error" data-el="error" hidden></div>
+    </div>
+  </div>
+
+  <!-- Panel (calendar) -->
+  <div class="dp-panel" data-el="panel" hidden>
+    <!-- Header -->
+    <div class="dp-panel__header">
+      <div class="dp-panel__monthContext" data-el="monthLabel">
+        <!-- TODO: month label formatting (locale) -->
+      </div>
+
+      <div class="dp-panel__nav">
+        <button type="button" class="dp-panel__navBtn" data-el="prevMonth">
+          Prev
+        </button>
+        <button type="button" class="dp-panel__navBtn" data-el="nextMonth">
+          Next
+        </button>
+
+        <!-- TODO (Interaction Model §3): keyboard navigation placeholders only -->
+      </div>
+    </div>
+
+    <!-- Grid -->
+    <div class="dp-panel__grid">
+      <div class="dp-panel__weekdayRow" data-el="weekdayRow">
+        <!-- TODO: weekday labels derived from locale + weekStartsOn -->
+      </div>
+
+      <div class="dp-panel__dateGrid" data-el="dateGrid">
+        <!-- Date buttons injected by JS -->
+      </div>
+
+      <!-- TODO: keep grid structure stable during navigation/loading states -->
+    </div>
+
+    <!-- Footer -->
+    <div class="dp-panel__footer">
+      <button type="button" class="dp-panel__dismiss" data-el="dismiss">
+        Cancel
+      </button>
+
+      <button type="button" class="dp-panel__confirm" data-el="confirm" hidden>
+        Apply
+      </button>
+
+      <!-- TODO (Interaction Model §4): decide commit-on-select vs apply-to-commit -->
+      <!-- TODO (Interaction Model §5): dismiss leaves value unchanged -->
+    </div>
+  </div>
+</div>
+
+<script type="module" src="./date-picker-field.js"></script>
